@@ -1,6 +1,7 @@
 import { cry, Transaction } from 'thor-devkit'
 
-//const txid = '0x38fac25309ab5395f1725284af46af585988983945e67b77cf9916b1ddf13d4b'
+console.log("TXID from explorer: 0x38fac25309ab5395f1725284af46af585988983945e67b77cf9916b1ddf13d4b");
+
 const origin = '0xa4d2050f24ed7EfF313B7E912D6e5BF96ce57B95'
 
 let clauses =  [{
@@ -20,8 +21,8 @@ let body: Transaction.Body = {
     nonce: '0x73541be64e72817c'
 }
 
-let tx = new Transaction(body)
-let signingHash = cry.blake2b256(tx.encode())
-let id = '0x' + cry.blake2b256(signingHash, Buffer.from(origin.slice(2), 'hex')).toString('hex')
+let tx = new Transaction(body);
+let signingHash = cry.blake2b256(tx.encode());
+let id = '0x' + cry.blake2b256(signingHash, Buffer.from(origin.slice(2), 'hex')).toString('hex');
 
-console.log(id)
+console.log('Computed TXID: ' + id);
